@@ -1,4 +1,5 @@
-const cpuLetters = ['a', 'b', 'c'];
+const cpuLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 let guessedLetters = [];
 let cpuLetterToGuess = null;
 let guessesLeft = 10;
@@ -37,38 +38,39 @@ document.onkeyup = function (event) {
 
     // maybe use index of instead, otherwise else will run the length of the alphabet -1 printing and reprinting HTML to the page or modal when later introduced
 
+    //mayeb use event keycodes as well
+
+    //maybe set a variable to true then start game if variable is true
+
     var i;
-for (i = 0; i < cpuLetters.length; i++) {
-    if (userChoice==cpuLetters[i]){
-    console.log('we have a match');
-
-    }else{
-        console.log('not a match')
-        
-    }
-    
-}
-
-    
-
-
-
-    document.getElementById('wins').innerHTML = '<h2>' + wins + '</h2>'
-    document.getElementById('losses').innerHTML = '<h2>' + losses + '</h2>'
-    document.getElementById('guesses-left').innerHTML = '<h2>' + guessesLeft + '</h2>'
-    document.getElementById('guesses-made').innerHTML = '<h2>' + guessedLetters + '</h2>'
-
-    if (userChoice === cpuLetterToGuess) {
-        wins++;
-        gameReset();
+    for (i = 0; i < cpuLetters.length; i++) {
+        if (userChoice == cpuLetters[i]) {
+            var keyIsGood = true;
+            console.log(keyIsGood);
+        }
     }
 
-    if (guessesLeft === 0) {
-        losses++;
-        gameReset();
-    }
+    if (keyIsGood === true) {
+        document.getElementById('wins').innerHTML = '<h2>' + wins + '</h2>'
+        document.getElementById('losses').innerHTML = '<h2>' + losses + '</h2>'
+        document.getElementById('guesses-left').innerHTML = '<h2>' + guessesLeft + '</h2>'
+        document.getElementById('guesses-made').innerHTML = '<h2>' + guessedLetters + '</h2>'
 
-    guessesLeft--
+        if (userChoice === cpuLetterToGuess) {
+            wins++;
+            gameReset();
+        }
+
+        if (guessesLeft === 0) {
+            losses++;
+            gameReset();
+        }
+
+        guessesLeft--
+
+    } else {
+        alert('pick a letter');
+    }//@ html is changing DOM if non characters are chosen  fix this
 
 };
 
